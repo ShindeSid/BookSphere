@@ -1,0 +1,25 @@
+.book-card{
+    padding:20px;
+    text-align:center;
+}
+
+.book-card img{
+    height:320px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.book-card h3{
+    margin-top:18px;
+    font-size:22px;
+}
+
+.book-card p{
+    color:#d4d4d4;
+    margin:10px 0;
+}
+
+.price{
+    color:#ffd54a;
+    margin-bottom:20px;
+}
