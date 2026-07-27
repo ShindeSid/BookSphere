@@ -7,311 +7,317 @@
   <title>Catalog - BookSphere</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f7f4ee;
+      --surface: #ffffff;
+      --ink: #171512;
+      --ink-soft: #514c46;
+      --muted: #8a8478;
+      --border: #ddd6c7;
+      --accent: #9a2b2b;
+      --accent-hover: #7c2222;
+      --header: #171512;
+      --header-text: #f0ede4;
+      --success: #2f6b2f;
     }
 
     body {
-      background: linear-gradient(135deg, #07122e, #0f1f45, #1d3557);
-      color: #ffffff;
-      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
     }
 
+    h1, h2, h3 { font-family: 'Lora', serif; }
+
     header {
+      background: var(--header);
+      border-bottom: 3px solid var(--accent);
       position: sticky;
       top: 0;
-      z-index: 1000;
-      background: rgba(8, 18, 45, 0.85);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0 20px;
+      z-index: 100;
     }
 
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 75px;
-      max-width: 1300px;
+      height: 68px;
+      max-width: 1200px;
       margin: 0 auto;
+      padding: 0 32px;
       width: 100%;
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 28px;
+      font-size: 20px;
       font-weight: 700;
       text-decoration: none;
-      color: white;
-    }
-
-    .logo-icon {
-      color: #ffd54a;
-      font-size: 30px;
+      color: var(--header-text);
     }
 
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 22px;
       list-style: none;
       align-items: center;
     }
 
     .nav-links a {
-      color: white;
+      color: var(--header-text);
       text-decoration: none;
       font-size: 14px;
       font-weight: 500;
-      transition: 0.3s;
+      opacity: 0.85;
     }
 
     .nav-links a:hover {
-      color: #7b61ff;
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .cart-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cart-badge {
+      background: var(--accent);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      min-width: 18px;
+      height: 18px;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
     }
 
     .logout-btn {
       padding: 8px 20px;
-      border-radius: 20px;
-      background: #ff6b6b;
-      color: white;
-      border: none;
+      border-radius: 2px;
+      background: transparent;
+      color: var(--header-text);
+      border: 1px solid #4a463f;
       cursor: pointer;
       font-weight: 600;
-      transition: 0.3s;
-      font-size: 12px;
+      font-size: 13px;
     }
 
     .logout-btn:hover {
-      background: #ff5252;
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     .container {
       width: 90%;
-      max-width: 1300px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
     .catalog-section {
-      padding: 80px 0;
+      padding: 50px 0 70px;
     }
 
     .section-title {
-      text-align: center;
-      font-size: 2.8rem;
-      font-weight: 700;
-      margin-bottom: 15px;
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
 
     .section-subtitle {
-      text-align: center;
-      color: #c5d3ff;
-      margin-bottom: 50px;
-      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 36px;
+      font-size: 14px;
     }
 
     .controls {
       display: flex;
-      justify-content: center;
-      gap: 20px;
+      gap: 14px;
       margin-bottom: 40px;
       flex-wrap: wrap;
     }
 
     .controls input {
-      width: 380px;
-      padding: 15px;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.08);
-      color: white;
+      flex: 1;
+      min-width: 260px;
+      padding: 11px 14px;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--ink);
       outline: none;
-      font-size: 15px;
-      transition: 0.3s;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
     }
 
-    .controls input::placeholder {
-      color: #d0d0d0;
-    }
-
-    .controls input:focus {
-      border-color: #7b61ff;
-      background: rgba(255, 255, 255, 0.12);
-    }
+    .controls input::placeholder { color: #b3ac9c; }
+    .controls input:focus { border-color: var(--ink); }
 
     .controls select {
-      padding: 15px;
-      border: none;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      font-size: 16px;
+      padding: 11px 14px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 14px;
       outline: none;
-      min-width: 220px;
+      min-width: 200px;
       cursor: pointer;
-      transition: 0.3s;
+      font-family: 'Inter', sans-serif;
     }
 
-    .controls select:focus {
-      background: rgba(255, 255, 255, 0.15);
-    }
+    .controls select:focus { border-color: var(--ink); }
 
-    .controls option {
-      color: black;
-      padding: 10px;
-    }
-
-    .loading-message {
+    .loading-message, .no-results {
+      color: var(--muted);
+      padding: 50px 20px;
+      font-size: 15px;
       text-align: center;
-      color: #c5d3ff;
-      padding: 40px 20px;
-      font-size: 18px;
     }
 
     .error-message {
-      background: rgba(255, 67, 67, 0.15);
-      border: 1px solid rgba(255, 67, 67, 0.3);
-      color: #ff6b6b;
-      padding: 15px 20px;
-      border-radius: 10px;
-      text-align: center;
-      margin-bottom: 30px;
-      font-weight: 500;
-    }
-
-    .no-results {
-      text-align: center;
-      color: #c5d3ff;
-      padding: 40px 20px;
-      font-size: 18px;
+      background: #fbeaea;
+      border: 1px solid #d99;
+      color: #8a2020;
+      padding: 14px 18px;
+      border-radius: 2px;
+      margin-bottom: 24px;
+      font-size: 14px;
     }
 
     .books-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
     }
 
     .book-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(18px);
-      border-radius: 18px;
-      padding: 20px;
-      text-align: center;
-      transition: 0.4s;
+      background: var(--surface);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
     }
 
-    .book-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    .fav-toggle {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 30px;
+      height: 30px;
+      border-radius: 2px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      z-index: 2;
+    }
+
+    .fav-toggle:hover { border-color: var(--accent); }
+
+    .fav-toggle.active {
+      border-color: var(--accent);
+      background: #fbeaea;
     }
 
     .book-image {
       width: 100%;
-      height: 330px;
+      height: 260px;
       object-fit: cover;
-      border-radius: 12px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
+      border: 1px solid var(--border);
     }
 
     .book-title {
-      font-size: 22px;
-      margin-bottom: 8px;
+      font-size: 16px;
+      margin-bottom: 4px;
+      color: var(--ink);
+      font-weight: 600;
+      min-height: 42px;
     }
 
     .book-author {
-      color: #d4d4d4;
-      margin-bottom: 15px;
-      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-size: 13px;
     }
 
     .book-price {
-      color: #ffd54a;
-      font-size: 22px;
+      color: var(--accent);
+      font-size: 18px;
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
+      font-family: 'Lora', serif;
     }
 
-    .add-cart-btn {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      background: #5b5ff8;
+    .btn {
+      padding: 10px 14px;
+      border-radius: 2px;
+      background: var(--ink);
       color: white;
-      border: none;
+      border: 1px solid var(--ink);
       font-weight: 600;
       cursor: pointer;
-      transition: 0.3s;
+      font-size: 12px;
+      margin-top: auto;
     }
 
-    .add-cart-btn:hover {
-      background: #7b61ff;
+    .btn:hover { background: var(--accent); border-color: var(--accent); }
+
+    .btn.in-cart {
+      background: var(--success);
+      border-color: var(--success);
     }
 
     footer {
-      margin-top: 80px;
-      background: #050d24;
-      padding: 50px 20px;
+      background: var(--header);
+      color: var(--header-text);
+      padding: 40px 0;
+      margin-top: 20px;
       text-align: center;
     }
 
-    footer h2 {
-      font-size: 32px;
-      margin-bottom: 15px;
-    }
-
     footer p {
-      color: #d6d6d6;
-      line-height: 1.8;
+      color: #a8a29a;
+      font-size: 13px;
     }
 
-    footer hr {
-      margin: 30px auto;
-      width: 70%;
-      border: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    @media (max-width: 640px) {
+      .navbar { padding: 0 20px; }
+      .nav-links { gap: 14px; }
+      .section-title { font-size: 26px; }
+      .books-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    @media (max-width: 768px) {
-      .controls {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .controls input {
-        width: 100%;
-      }
-
-      .controls select {
-        width: 100%;
-      }
-
-      .section-title {
-        font-size: 2.2rem;
-      }
-
-      .books-grid {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 420px) {
+      .books-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="navbar">
-      <a href="index.html" class="logo">
-        <span class="logo-icon">📚</span>
-        <span>BookSphere</span>
-      </a>
+      <a href="index.html" class="logo">📚 BookSphere</a>
       <ul class="nav-links">
         <li><a href="dashboard.html">Dashboard</a></li>
+        <li>
+          <a href="cart.html" class="cart-link">
+            Cart <span class="cart-badge" id="cartCount">0</span>
+          </a>
+        </li>
         <li><a href="index.html">Home</a></li>
         <li><button class="logout-btn" onclick="logout()">Logout</button></li>
       </ul>
@@ -321,7 +327,7 @@
   <main class="catalog-section">
     <div class="container">
       <h2 class="section-title">Book Catalogue</h2>
-      <p class="section-subtitle">Browse books from different categories.</p>
+      <p class="section-subtitle">Browse the full collection across every genre</p>
 
       <div id="errorContainer"></div>
 
@@ -329,7 +335,7 @@
         <input
           type="text"
           id="searchInput"
-          placeholder="Search books by title..."
+          placeholder="Search by title..."
           onkeyup="filterBooks()"
         >
         <select id="categorySelect" onchange="filterBooks()">
@@ -340,6 +346,10 @@
           <option>Self Help</option>
           <option>Biography</option>
           <option>Productivity</option>
+          <option>Science</option>
+          <option>History</option>
+          <option>Fantasy</option>
+          <option>Mystery</option>
         </select>
       </div>
 
@@ -352,9 +362,6 @@
 
   <footer>
     <div class="container">
-      <h2>BookSphere</h2>
-      <p>Discover thousands of books from every genre. Read, learn and explore your next favorite story.</p>
-      <hr>
       <p>© 2026 BookSphere. All Rights Reserved.</p>
     </div>
   </footer>
@@ -364,83 +371,145 @@
     let allBooks = [];
 
     function logout() {
-      if (confirm('Are you sure you want to logout?')) {
-        localStorage.removeItem('user');
-        localStorage.removeItem('loginTime');
-        window.location.href = 'index.html';
+      if (confirm("Are you sure you want to logout?")) {
+        localStorage.removeItem("user");
+        localStorage.removeItem("loginTime");
+        window.location.href = "index.html";
       }
     }
 
-    async function loadBooks() {
-      const loadingMsg = document.getElementById('loadingMessage');
-      const errorContainer = document.getElementById('errorContainer');
-      const booksContainer = document.getElementById('booksContainer');
+    function getFavorites() {
+      return JSON.parse(localStorage.getItem("favorites")) || [];
+    }
 
-      loadingMsg.style.display = 'block';
-      errorContainer.innerHTML = '';
+    function getCart() {
+      return JSON.parse(localStorage.getItem("cart")) || [];
+    }
+
+    function updateCartBadge() {
+      const cart = getCart();
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById("cartCount").textContent = count;
+    }
+
+    async function loadBooks() {
+      const loadingMsg = document.getElementById("loadingMessage");
+      const errorContainer = document.getElementById("errorContainer");
+
+      loadingMsg.style.display = "block";
+      errorContainer.innerHTML = "";
 
       try {
         const response = await fetch(`${API_URL}/api/books`);
-        if (!response.ok) throw new Error('Failed to fetch books');
+        if (!response.ok) throw new Error("Failed to fetch books");
 
         allBooks = await response.json();
-        loadingMsg.style.display = 'none';
+        loadingMsg.style.display = "none";
         displayBooks(allBooks);
       } catch (err) {
-        loadingMsg.style.display = 'none';
+        loadingMsg.style.display = "none";
         errorContainer.innerHTML = '<div class="error-message">Unable to load books. Please check your connection and try again.</div>';
         console.error(err);
       }
     }
 
     function displayBooks(books) {
-      const booksContainer = document.getElementById('booksContainer');
-      const noResultsMsg = document.getElementById('noResultsMessage');
+      const booksContainer = document.getElementById("booksContainer");
+      const noResultsMsg = document.getElementById("noResultsMessage");
+      const favorites = getFavorites();
+      const cart = getCart();
 
       if (books.length === 0) {
-        booksContainer.innerHTML = '';
-        noResultsMsg.style.display = 'block';
+        booksContainer.innerHTML = "";
+        noResultsMsg.style.display = "block";
         return;
       }
 
-      noResultsMsg.style.display = 'none';
-      booksContainer.innerHTML = books.map(book => `
+      noResultsMsg.style.display = "none";
+      booksContainer.innerHTML = books
+        .map((book) => {
+          const isFavorited = favorites.some(fav => fav.title === book.title && fav.author === book.author);
+          const isInCart = cart.some(item => item.title === book.title && item.author === book.author);
+          return `
         <div class="book-card">
+          <div class="fav-toggle ${isFavorited ? "active" : ""}" onclick="toggleFavorite('${escapeQuotes(book.title)}', '${escapeQuotes(book.author)}', this)">
+            ${isFavorited ? "♥" : "♡"}
+          </div>
           <img src="${book.image}" alt="${book.title}" class="book-image">
           <h3 class="book-title">${book.title}</h3>
           <p class="book-author">${book.author}</p>
           <h2 class="book-price">₹${book.price}</h2>
-          <button class="add-cart-btn" onclick="addToCart('${book.title}')">Add to Cart</button>
+          <button class="btn ${isInCart ? "in-cart" : ""}"
+                  onclick="addToCart('${escapeQuotes(book.title)}', '${escapeQuotes(book.author)}', ${book.price}, '${escapeQuotes(book.image)}', this)">
+            ${isInCart ? "Added" : "Add to Cart"}
+          </button>
         </div>
-      `).join('');
+      `;
+        })
+        .join("");
+    }
+
+    function escapeQuotes(str) {
+      return String(str).replace(/'/g, "\\'");
     }
 
     function filterBooks() {
-      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-      const categoryTerm = document.getElementById('categorySelect').value;
+      const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+      const categoryTerm = document.getElementById("categorySelect").value;
 
-      const filtered = allBooks.filter(book =>
-        (categoryTerm === 'All' || book.category === categoryTerm) &&
-        book.title.toLowerCase().includes(searchTerm)
+      const filtered = allBooks.filter(
+        (book) =>
+          (categoryTerm === "All" || book.category === categoryTerm) &&
+          book.title.toLowerCase().includes(searchTerm)
       );
 
       displayBooks(filtered);
     }
 
-    function addToCart(bookTitle) {
-      alert(`"${bookTitle}" has been added to your cart!`);
+    function toggleFavorite(title, author, el) {
+      let favorites = getFavorites();
+      const isFavorited = favorites.some(fav => fav.title === title && fav.author === author);
+
+      if (isFavorited) {
+        favorites = favorites.filter(fav => !(fav.title === title && fav.author === author));
+        el.textContent = "♡";
+        el.classList.remove("active");
+      } else {
+        favorites.push({ title, author });
+        el.textContent = "♥";
+        el.classList.add("active");
+      }
+
+      localStorage.setItem("favorites", JSON.stringify(favorites));
     }
 
-    // Check if user is logged in
+    function addToCart(title, author, price, image, btn) {
+      let cart = getCart();
+      const existing = cart.find(item => item.title === title && item.author === author);
+
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ title, author, price, image, quantity: 1 });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartBadge();
+
+      btn.textContent = "Added";
+      btn.classList.add("in-cart");
+    }
+
     function checkLogin() {
-      const user = localStorage.getItem('user');
+      const user = localStorage.getItem("user");
       if (!user) {
-        window.location.href = 'login.html';
+        window.location.href = "login.html";
       }
     }
 
-    window.addEventListener('load', () => {
+    window.addEventListener("load", () => {
       checkLogin();
+      updateCartBadge();
       loadBooks();
     });
   </script>

@@ -7,108 +7,107 @@
   <title>Login - BookSphere</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f7f4ee;
+      --surface: #ffffff;
+      --ink: #171512;
+      --ink-soft: #514c46;
+      --muted: #8a8478;
+      --border: #ddd6c7;
+      --accent: #9a2b2b;
+      --accent-hover: #7c2222;
+      --header: #171512;
+      --header-text: #f0ede4;
+      --error-bg: #fbeaea;
+      --error-border: #d99;
+      --error-text: #8a2020;
+      --success-bg: #eaf3ea;
+      --success-border: #9c9;
+      --success-text: #256b25;
     }
 
     body {
-      background: linear-gradient(135deg, #07122e, #0f1f45, #1d3557);
-      color: #ffffff;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
+    h1, h2 { font-family: 'Lora', serif; }
+
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(8, 18, 45, 0.85);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0 20px;
+      background: var(--header);
+      border-bottom: 3px solid var(--accent);
     }
 
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 75px;
-      max-width: 1300px;
+      height: 68px;
+      max-width: 1200px;
       margin: 0 auto;
+      padding: 0 32px;
       width: 100%;
     }
 
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 700;
       text-decoration: none;
-      color: white;
-    }
-
-    .logo-icon {
-      color: #ffd54a;
-      font-size: 28px;
+      color: var(--header-text);
     }
 
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 24px;
       list-style: none;
     }
 
     .nav-links a {
-      color: white;
+      color: var(--header-text);
       text-decoration: none;
       font-size: 14px;
       font-weight: 500;
-      transition: 0.3s;
+      opacity: 0.85;
     }
 
     .nav-links a:hover {
-      color: #7b61ff;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1300px;
-      margin: 0 auto;
+      opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
 
     .login-wrapper {
-      margin-top: 75px;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: calc(100vh - 75px);
-      padding: 40px 20px;
+      min-height: calc(100vh - 68px);
+      padding: 60px 20px;
     }
 
     .form-container {
-      width: 420px;
+      width: 400px;
       max-width: 95%;
-      padding: 40px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(15px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      padding: 44px 40px;
+      background: var(--surface);
+      border: 1px solid var(--border);
     }
 
     .form-container h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 32px;
+      margin-bottom: 6px;
+      font-size: 26px;
+      font-weight: 600;
+    }
+
+    .form-lede {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 28px;
     }
 
     .form-group {
@@ -118,131 +117,83 @@
     }
 
     label {
-      font-weight: 500;
-      margin-bottom: 8px;
-      color: #f2f2f2;
+      font-weight: 600;
+      margin-bottom: 7px;
+      color: var(--ink);
+      font-size: 13px;
     }
 
     input {
       width: 100%;
-      padding: 15px;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.08);
-      color: white;
+      padding: 11px 13px;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--ink);
       outline: none;
-      font-size: 15px;
-      transition: 0.3s;
-    }
-
-    input::placeholder {
-      color: #d0d0d0;
-    }
-
-    input:focus {
-      border-color: #7b61ff;
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    input:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .error-message {
-      background: rgba(255, 67, 67, 0.15);
-      border: 1px solid rgba(255, 67, 67, 0.3);
-      color: #ff6b6b;
-      padding: 12px 15px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      text-align: center;
       font-size: 14px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    input::placeholder { color: #b3ac9c; }
+
+    input:focus { border-color: var(--ink); }
+
+    input:disabled { opacity: 0.6; }
+
+    .error-message, .success-message {
+      padding: 11px 14px;
+      border-radius: 2px;
+      margin-bottom: 18px;
+      font-size: 13px;
       display: none;
+      border: 1px solid;
     }
 
-    .error-message.show {
-      display: block;
-    }
-
-    .success-message {
-      background: rgba(75, 192, 75, 0.15);
-      border: 1px solid rgba(75, 192, 75, 0.3);
-      color: #4bc04b;
-      padding: 12px 15px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      text-align: center;
-      font-size: 14px;
-      display: none;
-    }
-
-    .success-message.show {
-      display: block;
-    }
+    .error-message { background: var(--error-bg); border-color: var(--error-border); color: var(--error-text); }
+    .success-message { background: var(--success-bg); border-color: var(--success-border); color: var(--success-text); }
+    .error-message.show, .success-message.show { display: block; }
 
     button {
       width: 100%;
-      padding: 15px;
-      border-radius: 10px;
-      background: #5b5ff8;
-      color: white;
-      font-size: 16px;
+      padding: 12px;
+      border-radius: 2px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 14px;
       font-weight: 600;
-      border: none;
+      border: 1px solid var(--ink);
       cursor: pointer;
-      transition: 0.4s;
-      margin-top: 10px;
+      margin-top: 6px;
     }
 
-    button:hover:not(:disabled) {
-      background: #7b61ff;
-    }
-
-    button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
+    button:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); }
+    button:disabled { opacity: 0.6; cursor: not-allowed; }
 
     .footer-text {
-      margin-top: 20px;
+      margin-top: 22px;
       text-align: center;
-      color: #d6d6d6;
+      color: var(--muted);
+      font-size: 13px;
     }
 
     .footer-text a {
-      color: #7b61ff;
+      color: var(--accent);
       font-weight: 600;
       text-decoration: none;
-      transition: 0.3s;
     }
 
-    .footer-text a:hover {
-      color: #ffd54a;
-    }
+    .footer-text a:hover { text-decoration: underline; }
 
-    @media (max-width: 768px) {
-      .form-container {
-        padding: 30px;
-      }
-
-      .navbar {
-        height: 60px;
-      }
-
-      .login-wrapper {
-        margin-top: 60px;
-      }
+    @media (max-width: 480px) {
+      .form-container { padding: 34px 26px; }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="navbar">
-      <a href="index.html" class="logo">
-        <span class="logo-icon">📚</span>
-        <span>BookSphere</span>
-      </a>
+      <a href="index.html" class="logo">📚 BookSphere</a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="register.html">Register</a></li>
@@ -252,27 +203,28 @@
 
   <div class="login-wrapper">
     <div class="form-container">
-      <h2>Welcome Back</h2>
+      <h2>Login</h2>
+      <p class="form-lede">Enter your details to access your account.</p>
 
       <div class="error-message" id="errorMessage"></div>
       <div class="success-message" id="successMessage"></div>
 
       <form id="loginForm">
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required disabled>
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required disabled>
         </div>
 
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required disabled>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required disabled>
         </div>
 
         <button type="submit" id="loginBtn">Login</button>
       </form>
 
       <p class="footer-text">
-        Don't have an account? <a href="register.html">Register here</a>
+        Don't have an account? <a href="register.html">Create one</a>
       </p>
     </div>
   </div>
@@ -280,55 +232,54 @@
   <script>
     const API_URL = "http://localhost:5000";
 
-    // Enable form after page load
-    window.addEventListener('load', () => {
-      document.getElementById('email').disabled = false;
-      document.getElementById('password').disabled = false;
+    window.addEventListener("load", () => {
+      document.getElementById("email").disabled = false;
+      document.getElementById("password").disabled = false;
     });
 
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const loginBtn = document.getElementById('loginBtn');
-      const errorMsg = document.getElementById('errorMessage');
-      const successMsg = document.getElementById('successMessage');
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const loginBtn = document.getElementById("loginBtn");
+      const errorMsg = document.getElementById("errorMessage");
+      const successMsg = document.getElementById("successMessage");
 
-      errorMsg.classList.remove('show');
-      successMsg.classList.remove('show');
+      errorMsg.classList.remove("show");
+      successMsg.classList.remove("show");
 
       loginBtn.disabled = true;
-      loginBtn.textContent = 'Logging in...';
+      loginBtn.textContent = "Logging in...";
 
       try {
         const response = await fetch(`${API_URL}/api/auth/login`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password })
         });
 
         const data = await response.json();
 
         if (response.ok) {
-          successMsg.textContent = 'Login successful! Redirecting...';
-          successMsg.classList.add('show');
-          localStorage.setItem('user', JSON.stringify(data.user));
-          localStorage.setItem('loginTime', new Date().toLocaleString());
+          successMsg.textContent = "Login successful. Redirecting...";
+          successMsg.classList.add("show");
+          localStorage.setItem("user", JSON.stringify(data.user));
+          localStorage.setItem("loginTime", new Date().toLocaleString());
           setTimeout(() => {
-            window.location.href = 'dashboard.html';
-          }, 1500);
+            window.location.href = "dashboard.html";
+          }, 1200);
         } else {
-          errorMsg.textContent = data.message || 'Login failed. Please try again.';
-          errorMsg.classList.add('show');
+          errorMsg.textContent = data.message || "Login failed. Please try again.";
+          errorMsg.classList.add("show");
           loginBtn.disabled = false;
-          loginBtn.textContent = 'Login';
+          loginBtn.textContent = "Login";
         }
       } catch (err) {
-        errorMsg.textContent = 'Unable to connect to server. Please try again later.';
-        errorMsg.classList.add('show');
+        errorMsg.textContent = "Unable to connect to server. Please try again later.";
+        errorMsg.classList.add("show");
         loginBtn.disabled = false;
-        loginBtn.textContent = 'Login';
+        loginBtn.textContent = "Login";
       }
     });
   </script>
