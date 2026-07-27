@@ -3,17 +3,363 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BookVerse - Discover your next favorite book from our curated collection of books across multiple genres.">
+  <meta name="description" content="BookSphere - Discover your next favorite book from our curated collection.">
   <meta name="theme-color" content="#5b5ff8">
-  <title>BookVerse - Online Book Store</title>
-
+  <title>BookSphere - Online Book Store</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
+    body {
+      background: linear-gradient(135deg, #07122e, #0f1f45, #1d3557);
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 18, 45, 0.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0 20px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 75px;
+      max-width: 1300px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 28px;
+      font-weight: 700;
+      text-decoration: none;
+      color: white;
+    }
+
+    .logo-icon {
+      color: #ffd54a;
+      font-size: 30px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: #7b61ff;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: #7b61ff;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 60px;
+      line-height: 1.2;
+      margin-bottom: 25px;
+    }
+
+    .hero-text p {
+      color: #d6dfff;
+      line-height: 1.8;
+      margin-bottom: 35px;
+      font-size: 18px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 35px;
+      border-radius: 40px;
+      background: #5b5ff8;
+      color: white;
+      font-weight: 600;
+      transition: 0.4s;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .btn:hover {
+      background: #7b61ff;
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(123, 97, 255, 0.45);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid #7b61ff;
+      margin-left: 20px;
+    }
+
+    .features {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #c5d3ff;
+      margin-bottom: 50px;
+      font-size: 1rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(18px);
+      border-radius: 18px;
+      padding: 30px;
+      transition: 0.4s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .feature-card h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #ffd54a;
+    }
+
+    .feature-card p {
+      color: #d5d5d5;
+      line-height: 1.6;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    footer {
+      margin-top: 80px;
+      background: #050d24;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    footer h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      color: #d6d6d6;
+      line-height: 1.8;
+    }
+
+    footer hr {
+      margin: 30px auto;
+      width: 70%;
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    @media (max-width: 992px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 45px;
+      }
+
+      .hero-image {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-text h1 {
+        font-size: 38px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+
+      .nav-links a {
+        font-size: 14px;
+      }
+
+      .btn-secondary {
+        margin-left: 10px;
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+  <header>
+    <div class="navbar">
+      <a href="/" class="logo">
+        <span class="logo-icon">📚</span>
+        <span>BookSphere</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="login.html" class="btn">Login</a></li>
+        <li><a href="register.html" class="btn btn-secondary">Register</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>Discover Your Next Favourite Book</h1>
+          <p>Welcome to BookSphere – your gateway to thousands of books across every genre. Find your next great read and join millions of readers worldwide.</p>
+          <div>
+            <a href="catalog.html" class="btn">Explore Catalog</a>
+            <a href="register.html" class="btn btn-secondary">Get Started</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800" alt="Books">
+        </div>
+      </div>
+    </section>
+
+    <section class="section features" id="features">
+      <div class="container">
+        <h2 class="section-title">Why BookSphere?</h2>
+        <p class="section-subtitle">Everything you need for your reading journey</p>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>📖 Vast Collection</h3>
+            <p>Discover thousands of books from every genre – from bestsellers to hidden gems. Find exactly what you're looking for.</p>
+          </div>
+          <div class="feature-card">
+            <h3>🔍 Smart Search</h3>
+            <p>Powerful search and filtering tools help you find books by title, author, or category instantly.</p>
+          </div>
+          <div class="feature-card">
+            <h3>💳 Easy Checkout</h3>
+            <p>Secure and simple registration and checkout process. Start reading your favorite books in minutes.</p>
+          </div>
+          <div class="feature-card">
+            <h3>🌍 Global Community</h3>
+            <p>Join millions of readers around the world. Share your love for books and discover new recommendations.</p>
+          </div>
+          <div class="feature-card">
+            <h3>⚡ Fast & Reliable</h3>
+            <p>Lightning-fast page loads and 99.9% uptime. Your reading experience is always smooth.</p>
+          </div>
+          <div class="feature-card">
+            <h3>🎯 Personalized</h3>
+            <p>Get book recommendations based on your reading history and preferences.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title">About BookSphere</h2>
+        <p class="section-subtitle">Our mission is to connect readers with books they love</p>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center; line-height: 1.8; color: #d6dfff;">
+          <p style="margin-bottom: 20px;">BookSphere is a modern online bookstore dedicated to making books accessible to everyone. Whether you're a casual reader, a bookworm, or someone just starting your reading journey, we have something for you.</p>
+          <p style="margin-bottom: 20px;">Our carefully curated collection spans multiple genres including fiction, non-fiction, self-help, business, programming, biographies, and productivity books. We believe that reading is transformative, and we're here to help you find your next great adventure.</p>
+          <p>Join BookSphere today and become part of a global community of book lovers. Start exploring, reading, and growing with us.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <h2>BookSphere</h2>
+      <p>Discover thousands of books from every genre. Read, learn and explore your next favorite story.</p>
+      <hr>
+      <p>© 2026 BookSphere. All Rights Reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>

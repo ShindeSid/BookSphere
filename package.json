@@ -1,5 +1,6 @@
 {
-  "name": "online-book-store",
+  "name": "booksphere-store",
+  "description": "BookSphere - Online book store",
   "private": true,
   "version": "1.0.0",
   "type": "module",

@@ -12,7 +12,7 @@ function Navbar() {
 
         <Link to="/" className="logo">
           <FaBookOpen className="logo-icon" />
-          <span>BookVerse</span>
+          <span>BookSphere</span>
         </Link>
 
         <ul className={menuOpen ? "nav-links active" : "nav-links"}>
